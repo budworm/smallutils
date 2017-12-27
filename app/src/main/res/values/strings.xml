@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SmallutilDemo</string>
+    <string name="confirm_open_setting">APP运行需要某些权限，现在打开权限设置？</string>
+
+    <string name="space">&#160;</string>
+    <string name="slash">/</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+    <string name="cancel1">Cancel</string>
+    <string name="start">Start</string>
+    <string name="save">save</string>
+    <string name="delete">delete</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+
+    <string name="reset">reset</string>
+    <string name="complete">complete</string>
+    <string name="watch">Watch now</string>
+    <string name="net_exception">Network exception, please check</string>
+    <string name="network_config_failure">Configure information access failure, please check the network...</string>
+
+
+</resources>

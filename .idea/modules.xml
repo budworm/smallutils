@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\WZ3D\github\smallutils\library\kdx-unit-util.iml" filepath="E:\WZ3D\github\smallutils\library\kdx-unit-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smallutils.iml" filepath="$PROJECT_DIR$/smallutils.iml" />
+    </modules>
+  </component>
+</project>

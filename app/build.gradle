@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
+    defaultConfig {
+        applicationId "com.budworm.demo"
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
+        versionCode 1
+        versionName "0.0.1"
+        multiDexEnabled true
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
+    }
+
+    // 打包文件名配置
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = "Demo_Android_V${defaultConfig.versionName}_Debug.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    configurations.all {
+        resolutionStrategy.force 'org.hamcrest:hamcrest-core:1.1'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support'
+    })
+    compile 'com.android.support:support-annotations:' + VERSION_SUPPORT
+    //compile project(':library')
+    compile 'com.github.budworm:smallutils:0.0.2'
+
+}
