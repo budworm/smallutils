@@ -11,7 +11,7 @@
 /**
  *
  */
-package com.budworm.smallutils.video;
+package com.budworm.smallutils;
 
 import android.content.ContentResolver;
 import android.content.Context;
