@@ -59,7 +59,5 @@ dependencies {
         exclude group: 'com.android.support'
     })
     compile 'com.android.support:support-annotations:' + VERSION_SUPPORT
-    //compile project(':library')
-    compile 'com.github.budworm:smallutils:0.0.2'
-
+    compile project(':library')
 }
