@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.provider.Settings;
@@ -23,24 +24,13 @@ import java.io.File;
 import java.util.Locale;
 
 /**
- * Created by zhouchunjie on 2016/6/7.
+ * author zx
+ * version 1.0
+ * since 2018/1/4  .
  */
 public class SystemUtil {
 
     private String Tag = SystemUtil.class.getSimpleName();
-
-
-    /**
-     * 启动应用的设置
-     * author zx
-     * version 1.0
-     * since 2017/4/6 13:57
-     */
-    public static void startAppSettings(Context context, String packageName) {
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        intent.setData(Uri.parse("package:" + packageName));
-        context.startActivity(intent);
-    }
 
 
     /**
@@ -51,6 +41,39 @@ public class SystemUtil {
      */
     public static void exitApp(Activity activity) {
         System.exit(0);
+    }
+
+
+    /**
+     * 启动应用的设置
+     * author zx
+     * version 1.0
+     * since 2018/1/4  .
+     */
+    public static void startAppSetting(Context context) {
+        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 启动应用的设置详情
+     * author zx
+     * version 1.0
+     * since 2018/1/4  .
+     */
+    public static void startAppSettingDetails(Context context) {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= 9) {
+            localIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            localIntent.setData(Uri.fromParts("package", context.getPackageName(), null));
+        } else if (Build.VERSION.SDK_INT <= 8) {
+            localIntent.setAction(Intent.ACTION_VIEW);
+            localIntent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+            localIntent.putExtra("com.android.settings.ApplicationPkgName", context.getPackageName());
+        }
+        context.startActivity(localIntent);
     }
 
 
@@ -268,12 +291,12 @@ public class SystemUtil {
     public static void hideSystemUI(Activity activity) {
         if (null != activity && activity instanceof Activity) {
             activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN;
+                    //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
             activity.getWindow().getDecorView().setSystemUiVisibility(uiFlags);
         }
     }
