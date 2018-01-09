@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.Settings;
 import android.text.format.Formatter;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -356,9 +357,14 @@ public class SystemUtil {
      */
     public static long getScreenWidth(Activity activity) {
         long width = 0;
+        //
         if (null != activity && activity instanceof Activity) {
             WindowManager wm = activity.getWindowManager();
-            width = wm.getDefaultDisplay().getWidth();
+            //width = wm.getDefaultDisplay().getWidth();
+            // 包含状态栏
+            DisplayMetrics metrics = new DisplayMetrics();// 包含状态栏
+            wm.getDefaultDisplay().getRealMetrics(metrics);
+            width = metrics.widthPixels;
         }
         return width;
     }
@@ -374,7 +380,10 @@ public class SystemUtil {
         long height = 0;
         if (null != activity && activity instanceof Activity) {
             WindowManager wm = activity.getWindowManager();
-            height = wm.getDefaultDisplay().getHeight();
+            //height = wm.getDefaultDisplay().getHeight();
+            DisplayMetrics metrics = new DisplayMetrics();// 包含状态栏
+            wm.getDefaultDisplay().getRealMetrics(metrics);
+            height = metrics.heightPixels;
         }
         return height;
     }
