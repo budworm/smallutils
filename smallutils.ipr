@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/library" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
@@ -30,6 +46,13 @@
       </value>
     </option>
   </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smallutils.iml" filepath="$PROJECT_DIR$/smallutils.iml" />
+    </modules>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
@@ -44,5 +67,162 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="com.android.support.test.espresso:espresso-core-2.2.2">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.android/build-cache/2cca278b3cf15caf955deafeed6fed1f41ec16fb/output/jars/classes.jar!/" />
+        <root url="file://$USER_HOME$/.android/build-cache/2cca278b3cf15caf955deafeed6fed1f41ec16fb/output/res" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/espresso/espresso-core/2.2.2/espresso-core-2.2.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/espresso/espresso-core/2.2.2/espresso-core-2.2.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="com.android.support.test.espresso:espresso-idling-resource-2.2.2">
+      <CLASSES>
+        <root url="file://$USER_HOME$/.android/build-cache/97da4958d73d73478bc5ac57b58215de4d985e44/output/res" />
+        <root url="jar://$USER_HOME$/.android/build-cache/97da4958d73d73478bc5ac57b58215de4d985e44/output/jars/classes.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/espresso/espresso-idling-resource/2.2.2/espresso-idling-resource-2.2.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/espresso/espresso-idling-resource/2.2.2/espresso-idling-resource-2.2.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="com.android.support.test:exposed-instrumentation-api-publish-0.5">
+      <CLASSES>
+        <root url="file://$USER_HOME$/.android/build-cache/18ac5e6ae61f8bac4091f2aa369c81fc94b7e67c/output/res" />
+        <root url="jar://$USER_HOME$/.android/build-cache/18ac5e6ae61f8bac4091f2aa369c81fc94b7e67c/output/jars/classes.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/exposed-instrumentation-api-publish/0.5/exposed-instrumentation-api-publish-0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/exposed-instrumentation-api-publish/0.5/exposed-instrumentation-api-publish-0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="com.android.support.test:rules-0.5">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.android/build-cache/0de6ad7cc830dd63222144ff3945b6e3c91c2018/output/jars/classes.jar!/" />
+        <root url="file://$USER_HOME$/.android/build-cache/0de6ad7cc830dd63222144ff3945b6e3c91c2018/output/res" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/rules/0.5/rules-0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/rules/0.5/rules-0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="com.android.support.test:runner-0.5">
+      <CLASSES>
+        <root url="file://$USER_HOME$/.android/build-cache/660a07aa0534a27de6a7b12b9e4905e620e0c96b/output/res" />
+        <root url="jar://$USER_HOME$/.android/build-cache/660a07aa0534a27de6a7b12b9e4905e620e0c96b/output/jars/classes.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/runner/0.5/runner-0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/test/runner/0.5/runner-0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="com.android.support:multidex-1.0.1">
+      <CLASSES>
+        <root url="file://$USER_HOME$/.android/build-cache/cd1070b8d8e824353b9d3f0969f7a54db045b56c/output/res" />
+        <root url="jar://$USER_HOME$/.android/build-cache/cd1070b8d8e824353b9d3f0969f7a54db045b56c/output/jars/classes.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="com.android.support:multidex-instrumentation-1.0.1">
+      <CLASSES>
+        <root url="file://$USER_HOME$/.android/build-cache/85ac7b04a7dfb61536a56b0e09c135c3c4d3a693/output/res" />
+        <root url="jar://$USER_HOME$/.android/build-cache/85ac7b04a7dfb61536a56b0e09c135c3c4d3a693/output/jars/classes.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="com.android.support:support-annotations:25.3.1@jar">
+      <CLASSES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://E:/android-sdk/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="com.google.code.findbugs:jsr305:2.0.1@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.1/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="com.squareup:javawriter:2.1.1@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/javawriter/2.1.1/67ff45d9ae02e583d0f9b3432a5ebbe05c30c966/javawriter-2.1.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/javawriter/2.1.1/5b31387d839a5cdaf5b6de3990da01f7f2b963c5/javawriter-2.1.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="javax.annotation:javax.annotation-api:1.2@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="javax.inject:javax.inject:1@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/a00123f261762a7c5e0ec916a2c7c8298d29c400/javax.inject-1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="junit:junit:4.12@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="org.hamcrest:hamcrest-core:1.1@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.1/860340562250678d1a344907ac75754e259cdb14/hamcrest-core-1.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.1/2ccf1154d1a8936042a8a742dc3e611d02ac7213/hamcrest-core-1.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="org.hamcrest:hamcrest-integration:1.3@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-integration/1.3/5de0c73fef18917cd85d0ab70bb23818685e4dfd/hamcrest-integration-1.3.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-integration/1.3/ae7787a563e6a1b1f17fd4ac43be3a3c8830cfda/hamcrest-integration-1.3-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="org.hamcrest:hamcrest-library:1.3@jar">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/47a7ee46628ab7133129cd7cef1e92657bc275e/hamcrest-library-1.3-sources.jar!/" />
+      </SOURCES>
+    </library>
   </component>
 </project>
