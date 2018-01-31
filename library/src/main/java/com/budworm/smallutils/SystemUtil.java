@@ -1,13 +1,10 @@
 package com.budworm.smallutils;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -79,44 +76,6 @@ public class SystemUtil {
 
 
     /**
-     * 检查网络连接
-     *
-     * @param context
-     * @return
-     */
-    public static boolean isNetConnect(Context context) {
-        boolean result = false;
-        if (context != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            @SuppressLint("MissingPermission") NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-            if (mNetworkInfo != null) {
-                result = mNetworkInfo.isAvailable();
-            }
-        }
-        return result;
-    }
-
-
-    /**
-     * 检查网络连接
-     * author zx
-     * version 1.0
-     * since 2017/1/3 16:57
-     */
-    public static boolean checkNetConnect(Context context) {
-        boolean result = false;
-        if (context != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            @SuppressLint("MissingPermission") NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-            if (mNetworkInfo != null) {
-                result = mNetworkInfo.isAvailable();
-            }
-        }
-        return result;
-    }
-
-
-    /**
      * 判断语言
      * author zx
      * version 1.0
@@ -159,43 +118,6 @@ public class SystemUtil {
                     language.equalsIgnoreCase("de") ||
                     language.equalsIgnoreCase("cs");
             if (res) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
-    /**
-     * 判断屏幕方向【横True|竖False】
-     *
-     * @return void
-     * @author zx
-     */
-    public static boolean isLandscape(Context context) {
-        try {
-            // 竖1|横!=1
-            if (context.getResources().getConfiguration().orientation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
-    /**
-     * 判断屏幕方向
-     *
-     * @return void
-     * @author zx
-     */
-    public static boolean isPortrait(Context context) {
-        try {
-            if (context.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                 return true;
             }
         } catch (Exception e) {
@@ -422,6 +344,60 @@ public class SystemUtil {
 
         }
         return value;
+    }
+
+
+    /**
+     * 得到屏幕旋转的状态
+     *
+     * @param context
+     * @return
+     */
+    public static int getRotationStatus(Context context) {
+        int status = 0;
+        try {
+            status = android.provider.Settings.System.getInt(context.getContentResolver(), android.provider.Settings.System.ACCELEROMETER_ROTATION);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+
+    /**
+     * 判断屏幕方向【横True|竖False】
+     *
+     * @return void
+     * @author zx
+     */
+    public static boolean isLandscape(Context context) {
+        try {
+            // 竖1|横!=1
+            if (context.getResources().getConfiguration().orientation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    /**
+     * 判断屏幕方向
+     *
+     * @return void
+     * @author zx
+     */
+    public static boolean isPortrait(Context context) {
+        try {
+            if (context.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

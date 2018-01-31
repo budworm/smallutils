@@ -12,7 +12,6 @@ import android.view.View;
  */
 public class AnimationUtil {
 
-
     /**
      * 变色提示动画
      * author zx
