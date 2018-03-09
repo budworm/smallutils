@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -259,6 +260,22 @@ public class SystemUtil {
 
 
     /**
+     * 导航栏透明
+     * setContentView之前调用
+     * author zx
+     * version 1.0
+     * since 2016/12/29 17:54
+     */
+    public static void transparentNavigation(Activity activity) {
+        if (activity instanceof Activity) {
+            // 虚拟导航透明
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+    }
+
+
+    /**
      * 显示系统栏
      * author zx
      * version 1.0
@@ -491,6 +508,27 @@ public class SystemUtil {
         if (imm != null) {
             imm.hideSoftInputFromWindow(context.getWindow().getDecorView().getWindowToken(), 0);
         }
+    }
+
+
+    /**
+     * 测试当前摄像头能否被使用
+     * @return
+     */
+    public static boolean isCameraCanUse() {
+        boolean canUse = true;
+        Camera mCamera = null;
+        try {
+            mCamera = Camera.open(0);
+            mCamera.setDisplayOrientation(90);
+        } catch (Exception e) {
+            canUse = false;
+        }
+        if (canUse) {
+            mCamera.release();
+            mCamera = null;
+        }
+        return canUse;
     }
 
 }
