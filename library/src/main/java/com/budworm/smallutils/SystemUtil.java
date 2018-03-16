@@ -537,7 +537,7 @@ public class SystemUtil {
      *
      * @param context 使用getApplicationContext()
      */
-    public void adaptLanguageConfig(Context context) {
+    public static void adaptLanguageConfig(Context context) {
         Resources resources = context.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         Configuration config = resources.getConfiguration();
