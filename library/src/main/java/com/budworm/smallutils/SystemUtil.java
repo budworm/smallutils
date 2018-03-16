@@ -5,10 +5,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.LocaleList;
 import android.os.StatFs;
 import android.provider.Settings;
 import android.text.format.Formatter;
@@ -276,6 +279,24 @@ public class SystemUtil {
 
 
     /**
+     * 设置转态栏颜色
+     *
+     * @return
+     */
+    public static void setWindowStatusBarColor(Activity activity, int colorResId) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(activity.getResources().getColor(colorResId));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * 显示系统栏
      * author zx
      * version 1.0
@@ -512,7 +533,29 @@ public class SystemUtil {
 
 
     /**
+     * 适配多语言|8.0
+     *
+     * @param context 使用getApplicationContext()
+     */
+    public void adaptLanguageConfig(Context context) {
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(config.locale);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LocaleList localeList = new LocaleList(config.locale);
+            LocaleList.setDefault(localeList);
+            config.setLocales(localeList);
+            context.createConfigurationContext(config);
+        }
+        Locale.setDefault(config.locale);
+        resources.updateConfiguration(config, dm);
+    }
+
+
+    /**
      * 测试当前摄像头能否被使用
+     *
      * @return
      */
     public static boolean isCameraCanUse() {
@@ -530,5 +573,6 @@ public class SystemUtil {
         }
         return canUse;
     }
+
 
 }
