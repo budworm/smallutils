@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.provider.Settings;
 
 /**
  * Created by zx on 2018/3/15.
@@ -31,6 +32,7 @@ public class AppInfoUtil {
 
     /**
      * [获取应用程序版本名称信息]
+     *
      * @param context
      * @return 当前应用的版本名称
      */
@@ -49,6 +51,7 @@ public class AppInfoUtil {
 
     /**
      * [获取应用程序版本名称信息]
+     *
      * @param context
      * @return 当前应用的版本名称
      */
@@ -67,6 +70,7 @@ public class AppInfoUtil {
 
     /**
      * [获取应用程序版本名称信息]
+     *
      * @param context
      * @return 当前应用的版本名称
      */
@@ -85,6 +89,7 @@ public class AppInfoUtil {
 
     /**
      * 获取图标 bitmap
+     *
      * @param context
      */
     public static synchronized Bitmap getBitmap(Context context) {
@@ -107,6 +112,7 @@ public class AppInfoUtil {
 
     /**
      * 获取图标 Drawable
+     *
      * @param context
      */
     public static synchronized Drawable getDrawable(Context context) {
@@ -122,5 +128,32 @@ public class AppInfoUtil {
         }
         return packageManager.getApplicationIcon(applicationInfo); //xxx根据自己的情况获取drawable
     }
+
+
+    /**
+     * 获得休眠时间 毫秒
+     */
+    public static int getScreenOffTime(Context context) {
+        int screenOffTime = 0;
+        try {
+            screenOffTime = Settings.System.getInt(context.getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT);
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+        return screenOffTime;
+    }
+
+
+    /**
+     * 设置休眠时间 毫秒
+     */
+    public static void setScreenOffTime(Context context, int paramInt) {
+        try {
+            Settings.System.putInt(context.getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT, paramInt);
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+    }
+
 
 }

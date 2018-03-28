@@ -29,7 +29,7 @@ public class NetConnectUtil {
         boolean result = false;
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-             NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
             if (mNetworkInfo != null) {
                 result = mNetworkInfo.isAvailable();
             }
@@ -45,7 +45,7 @@ public class NetConnectUtil {
      * @return
      */
     @SuppressLint("MissingPermission")
-    private Boolean isNetWifi(Context context) {
+    public static Boolean isNetWifi(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -63,8 +63,8 @@ public class NetConnectUtil {
      * version 1.0
      * since 2018/1/12  .
      */
-    public void getAppTraffic(Context context, Object tag) {
-        Log.e("getTraffic", tag + ":监控开始**************↓↓↓");
+    public static void getAppTraffic(Context context, Object tag) {
+        Log.e("getTraffic", tag + "|监控开始**************↓↓↓");
         try {
             //获取系统应用包管理
             PackageManager pm = context.getPackageManager();
@@ -72,13 +72,13 @@ public class NetConnectUtil {
             if (info != null && info.applicationInfo.uid != 0) {
                 long rxBytes = TrafficStats.getUidRxBytes(info.applicationInfo.uid);//获取某个网络UID的接受字节数
                 long txBytes = TrafficStats.getUidTxBytes(info.applicationInfo.uid);//获取某个网络UID的发送字节数
-                Log.e("getTraffic", tag + ":接受消耗的流量--:" + Formatter.formatFileSize(context, rxBytes));
-                Log.e("getTraffic", tag + ":发送消耗的流量--:" + Formatter.formatFileSize(context, txBytes));
+                Log.e("getTraffic", tag + "|接受消耗的流量--:" + Formatter.formatFileSize(context, rxBytes));
+                Log.e("getTraffic", tag + "|发送消耗的流量--:" + Formatter.formatFileSize(context, txBytes));
             } else {
-                Log.e("getTraffic", tag + ":消耗的流量--:0");
+                Log.e("getTraffic", tag + "|消耗的流量--:0");
             }
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e("getTraffic", tag + ":异常--");
+            Log.e("getTraffic", tag + "|异常--");
             e.printStackTrace();
         }
     }
