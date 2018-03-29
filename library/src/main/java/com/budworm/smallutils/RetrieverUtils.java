@@ -31,6 +31,7 @@ import java.util.HashMap;
  * since 2017/7/26  .
  */
 public class RetrieverUtils {
+
     private static ContentResolver contentResolver;
 
     /**
@@ -194,6 +195,65 @@ public class RetrieverUtils {
             }
         }
         return null;
+    }
+
+
+    /**
+     * 视频宽度
+     * author zx
+     * version 1.0
+     * since 2017/1/18 10:41
+     */
+    public static String retrieverVideoWidth(String filePath) {
+        String res = "";
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        try {
+            File file = new File(filePath);
+            if (file.exists()) {
+                retriever.setDataSource(filePath);
+                res = retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH).trim();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                retriever.release();
+                retriever = null;
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
+            return res;
+        }
+    }
+
+
+    /**
+     /**
+     * 视频高度
+     * author zx
+     * version 1.0
+     * since 2017/1/18 10:41
+     */
+    public static String retrieverVideoHeight(String filePath) {
+        String res = "";
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        try {
+            File file = new File(filePath);
+            if (file.exists()) {
+                retriever.setDataSource(filePath);
+                res = retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT).trim();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                retriever.release();
+                retriever = null;
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
+            return res;
+        }
     }
 
 
