@@ -1,7 +1,9 @@
 package com.budworm.smallutils.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.PowerManager;
+import android.view.WindowManager;
 
 import com.budworm.smallutils.SystemUtil;
 
@@ -13,14 +15,19 @@ import com.budworm.smallutils.SystemUtil;
  * since 2017/7/25  .
  */
 public class WakeLockUtil {
-    protected PowerManager.WakeLock wakeLock;// 休眠锁
-    protected PowerManager powerManager;
-    protected Context context;
+    private PowerManager.WakeLock wakeLock;// 休眠锁
+    private PowerManager powerManager;
+    private Context context;
 
 
-    public WakeLockUtil(Context context) {
+    public static WakeLockUtil build(Context context) {
+        return new WakeLockUtil(context, "MyWakeLock");
+    }
+
+
+    private WakeLockUtil(Context context, String Tag) {
         this.context = context;
-        initWakeLock("My Lock");
+        initWakeLock(Tag);
     }
 
 
@@ -30,10 +37,9 @@ public class WakeLockUtil {
      * version 1.0
      * since 2017/1/17 15:25
      */
-    protected void initWakeLock(String tag) {
+    private void initWakeLock(String tag) {
         powerManager = (PowerManager) context.getSystemService(context.POWER_SERVICE);
-        wakeLock = this.powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, tag);
-        // 非计数模式
+        wakeLock = this.powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, tag); // 6.0以后失效
         wakeLock.setReferenceCounted(false);
         // 如果亮度是自动,关闭自动调整
         int mode = SystemUtil.getScreenMode(context);
@@ -49,10 +55,10 @@ public class WakeLockUtil {
      * since 2017/1/17 17:52
      */
     public void acquireWakeLock() {
-        if (wakeLock == null) {
-            initWakeLock("My Lock");
+        if (wakeLock != null && !wakeLock.isHeld()) { // 禁止休眠
+            wakeLock.acquire();
         }
-        wakeLock.acquire(); // 禁止休眠
+        addFlag(context);
     }
 
 
@@ -63,8 +69,35 @@ public class WakeLockUtil {
      * since 2017/1/17 17:52
      */
     public void releaseWakeLock() {
-        if (wakeLock != null) { // 允许休眠
+        if (wakeLock != null && wakeLock.isHeld()) { // 允许休眠
             wakeLock.release();
+        }
+        clearFlag(context);
+    }
+
+
+    /**
+     * 屏幕常亮
+     * author zx
+     * version 1.0
+     * since 2017/1/17 17:52
+     */
+    public void addFlag(Context context) {
+        if (context instanceof Activity) {
+            ((Activity) context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+    }
+
+
+    /**
+     * 屏幕自动
+     * author zx
+     * version 1.0
+     * since 2017/1/17 17:52
+     */
+    public void clearFlag(Context context) {
+        if (context instanceof Activity) {
+            ((Activity) context).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
     }
 
