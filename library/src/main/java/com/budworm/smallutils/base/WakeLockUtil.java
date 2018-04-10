@@ -17,9 +17,10 @@ public class WakeLockUtil {
     protected PowerManager powerManager;
     protected Context context;
 
+
     public WakeLockUtil(Context context) {
         this.context = context;
-        initWakeLock();
+        initWakeLock("My Lock");
     }
 
 
@@ -29,9 +30,11 @@ public class WakeLockUtil {
      * version 1.0
      * since 2017/1/17 15:25
      */
-    protected void initWakeLock() {
+    protected void initWakeLock(String tag) {
         powerManager = (PowerManager) context.getSystemService(context.POWER_SERVICE);
-        wakeLock = this.powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Lock");
+        wakeLock = this.powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, tag);
+        // 非计数模式
+        wakeLock.setReferenceCounted(false);
         // 如果亮度是自动,关闭自动调整
         int mode = SystemUtil.getScreenMode(context);
         if (mode == 1) {
@@ -46,9 +49,10 @@ public class WakeLockUtil {
      * since 2017/1/17 17:52
      */
     public void acquireWakeLock() {
-        if (wakeLock != null && !wakeLock.isHeld()) { // 禁止休眠
-            wakeLock.acquire();
+        if (wakeLock == null) {
+            initWakeLock("My Lock");
         }
+        wakeLock.acquire(); // 禁止休眠
     }
 
 
@@ -59,7 +63,7 @@ public class WakeLockUtil {
      * since 2017/1/17 17:52
      */
     public void releaseWakeLock() {
-        if (wakeLock != null && wakeLock.isHeld()) { // 允许休眠
+        if (wakeLock != null) { // 允许休眠
             wakeLock.release();
         }
     }
