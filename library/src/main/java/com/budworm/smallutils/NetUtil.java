@@ -15,7 +15,7 @@ import android.util.Log;
  * version 1.0
  * since 2018/1/4  .
  */
-public class NetConnectUtil {
+public class NetUtil {
 
 
     /**
@@ -25,7 +25,7 @@ public class NetConnectUtil {
      * @return
      */
     @SuppressLint("MissingPermission")
-    public static boolean isNetConnect(Context context) {
+    public static boolean isConnect(Context context) {
         boolean result = false;
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -45,7 +45,7 @@ public class NetConnectUtil {
      * @return
      */
     @SuppressLint("MissingPermission")
-    public static Boolean isNetWifi(Context context) {
+    public static Boolean isWifi(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -63,7 +63,7 @@ public class NetConnectUtil {
      * version 1.0
      * since 2018/1/12  .
      */
-    public static void getAppTraffic(Context context, Object tag) {
+    public static void printTrafficLog(Context context, Object tag) {
         Log.e("getTraffic", tag + "|监控开始**************↓↓↓");
         try {
             //获取系统应用包管理

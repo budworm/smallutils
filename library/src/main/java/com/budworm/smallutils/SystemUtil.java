@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import java.io.File;
 import java.util.Locale;
@@ -280,6 +281,22 @@ public class SystemUtil {
 
 
     /**
+     * 透明状态栏
+     * setContentView之前调用
+     * author zx
+     * version 1.0
+     * since 2016/12/29 17:54
+     */
+    public static void transparentStatus(Activity activity) {
+        if (activity instanceof Activity) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+        }
+    }
+
+
+    /**
      * 设置转态栏颜色
      *
      * @return
@@ -516,6 +533,21 @@ public class SystemUtil {
             e.printStackTrace();
         }
         return availableBlocks * blockSize;
+    }
+
+
+    /**
+     * 打开软键盘
+     * author zx
+     * version 1.0
+     * since 2017/4/12 13:57
+     */
+    public static void openInputWin(EditText editText, Activity context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        }
     }
 
 
