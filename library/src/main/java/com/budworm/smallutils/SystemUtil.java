@@ -218,15 +218,19 @@ public class SystemUtil {
      * since 2016/12/29 17:53
      */
     public static void hideSystemUI(Activity activity) {
-        if (null != activity && activity instanceof Activity) {
-            activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
-            activity.getWindow().getDecorView().setSystemUiVisibility(uiFlags);
+        try {
+            if (null != activity && activity instanceof Activity) {
+                activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE;
+                activity.getWindow().getDecorView().setSystemUiVisibility(uiFlags);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -238,14 +242,18 @@ public class SystemUtil {
      * since 2016/12/29 17:53
      */
     public static void hideSystemUI(View view) {
-        if (null != view) {
-            int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
-            view.setSystemUiVisibility(uiFlags);
+        try {
+            if (null != view) {
+                int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE;
+                view.setSystemUiVisibility(uiFlags);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -257,10 +265,14 @@ public class SystemUtil {
      * since 2016/12/29 17:54
      */
     public static void hideNavigationBar(Activity activity) {
-        int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_IMMERSIVE;
-        activity.getWindow().getDecorView().setSystemUiVisibility(uiFlags);
+        try {
+            int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
+            activity.getWindow().getDecorView().setSystemUiVisibility(uiFlags);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -272,10 +284,17 @@ public class SystemUtil {
      * since 2016/12/29 17:54
      */
     public static void transparentNavigation(Activity activity) {
-        if (activity instanceof Activity) {
-            // 虚拟导航透明
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        try {
+            if (activity instanceof Activity) {
+                // 虚拟导航透明
+                activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+                activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -288,10 +307,14 @@ public class SystemUtil {
      * since 2016/12/29 17:54
      */
     public static void transparentStatus(Activity activity) {
-        if (activity instanceof Activity) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        try {
+            if (activity instanceof Activity) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
